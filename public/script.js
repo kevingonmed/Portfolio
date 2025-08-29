@@ -1,8 +1,102 @@
 // Global variables
-let currentSlide = {
-    classProjects: 0,
-    personalProjects: 0
-};
+let currentFilter = 'all';
+
+// Resume content for download
+const resumeContent = `Kevin Gonzalez - Software Engineer
+
+Contact Information:
+Email: gon22043@byui.edu
+LinkedIn: https://www.linkedin.com/in/kevin-gonzalez-/
+GitHub: https://github.com/kevingonmed
+Location: Rexburg, Idaho
+
+Education:
+Brigham Young University - Idaho
+Bachelor of Science in Software Engineering
+Expected Graduation: 2026
+GPA: 3.8/4.0
+
+Experience:
+Software Engineer Student (2022 - Present)
+- 2+ years of hands-on experience in software development
+- Completed 15+ projects ranging from web applications to mobile apps
+- Proficient in multiple programming languages and frameworks
+
+Technical Skills:
+Programming Languages: Python, JavaScript, HTML, CSS, Kotlin
+Frameworks & Libraries: React, Node.js, Android SDK
+Cloud Technologies: AWS, Firebase, Azure
+Databases: MySQL, MongoDB
+Tools: Git, Docker, VS Code
+
+Projects:
+
+1. Web Development Course Projects
+   - Built dynamic websites using HTML, CSS, and JavaScript
+   - Focused on responsive, accessible web design
+   - Repository: https://github.com/kevingonmed/wdd131
+
+2. Modularization Design
+   - Designed modular programs using Python
+   - Emphasized clean software architecture and problem-solving
+   - Repository: https://github.com/kevingonmed/Modularization-Design
+
+3. Algorithm Design
+   - Implemented various algorithms and data structures
+   - Focused on optimization and analysis
+   - Repository: https://github.com/kevingonmed/Algorithm-Design
+
+4. Cloud Computing Projects
+   - Deployed scalable applications using AWS, Firebase, and Azure
+   - Experience with containerization and microservices
+   - Repository: https://github.com/kevingonmed/Intro-to-Cloud
+
+5. jFit Mobile App
+   - Android fitness tracking application built with Kotlin
+   - Features workout tracking, diet monitoring, and health statistics
+   - Repository: https://github.com/kevingonmed/jFIT
+
+6. Rexy's Voice (Hackathon Project)
+   - Web application for course reviews at BYU-Idaho
+   - Built during hackathon with team collaboration
+   - Repository: https://github.com/MitziVite/Hackathon-fall-2024
+
+7. Lengua AI
+   - AI-powered translation web application
+   - Integrates Hugging Face API for instant translation
+   - Live Demo: https://lengua-ai-c060e.web.app/
+
+8. Moodyst Playlist Manager
+   - Python application for mood-based Spotify playlists
+   - Uses AI text analysis for personalized music recommendations
+   - Repository: https://github.com/kevingonmed/Playlist-Manager
+
+Core Competencies:
+- Software Architecture and Design
+- Full Stack Development
+- Cloud Computing and Deployment
+- Mobile Application Development
+- Problem Solving and Algorithm Design
+- Team Collaboration and Version Control
+- User Experience Design
+
+Philosophy:
+"Think different. Code better." - I believe in creating scalable, elegant solutions 
+that make a meaningful impact. My goal is to become a Software Architect, designing 
+systems that solve real-world problems with innovative technology.
+
+Awards & Recognition:
+- Dean's List (Multiple Semesters)
+- Hackathon Participant
+- 100% Project Completion Rate
+
+References:
+Available upon request
+
+---
+Generated on ${new Date().toLocaleDateString()}
+Portfolio: https://kevingonzalez.dev
+`;
 
 // Custom Cursor
 const cursor = {
@@ -201,31 +295,102 @@ const scrollAnimations = {
     }
 };
 
-// Project Filter
-const projectFilter = {
+// Projects Carousel
+const projectsCarousel = {
     init() {
-        const filterBtns = document.querySelectorAll('.filter-btn');
+        this.carousel = document.getElementById('projectsCarousel');
+        this.prevBtn = document.getElementById('prevBtn');
+        this.nextBtn = document.getElementById('nextBtn');
+        this.filterBtns = document.querySelectorAll('.filter-btn');
+
+        if (!this.carousel || !this.prevBtn || !this.nextBtn) return;
+
+        this.scrollAmount = 380; // Card width + gap
+        this.setupEventListeners();
+        this.updateNavigationButtons();
+    },
+
+    setupEventListeners() {
+        // Navigation buttons
+        this.prevBtn.addEventListener('click', () => this.scrollPrev());
+        this.nextBtn.addEventListener('click', () => this.scrollNext());
+
+        // Filter buttons
+        this.filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => this.filterProjects(e.target.getAttribute('data-filter')));
+        });
+
+        // Update navigation on scroll
+        this.carousel.addEventListener('scroll', () => {
+            this.updateNavigationButtons();
+        });
+
+        // Touch/swipe support
+        let startX = 0;
+        let scrollLeft = 0;
+
+        this.carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].pageX - this.carousel.offsetLeft;
+            scrollLeft = this.carousel.scrollLeft;
+        });
+
+        this.carousel.addEventListener('touchmove', (e) => {
+            if (!startX) return;
+            const x = e.touches[0].pageX - this.carousel.offsetLeft;
+            const walk = (x - startX) * 2;
+            this.carousel.scrollLeft = scrollLeft - walk;
+        });
+
+        this.carousel.addEventListener('touchend', () => {
+            startX = 0;
+        });
+    },
+
+    scrollPrev() {
+        this.carousel.scrollBy({
+            left: -this.scrollAmount,
+            behavior: 'smooth'
+        });
+    },
+
+    scrollNext() {
+        this.carousel.scrollBy({
+            left: this.scrollAmount,
+            behavior: 'smooth'
+        });
+    },
+
+    updateNavigationButtons() {
+        const maxScroll = this.carousel.scrollWidth - this.carousel.clientWidth;
+
+        this.prevBtn.disabled = this.carousel.scrollLeft <= 0;
+        this.nextBtn.disabled = this.carousel.scrollLeft >= maxScroll - 1;
+    },
+
+    filterProjects(filterValue) {
+        // Update active filter button
+        this.filterBtns.forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`[data-filter="${filterValue}"]`).classList.add('active');
+
         const projectCards = document.querySelectorAll('.project-card-enhanced');
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                btn.classList.add('active');
-
-                const filterValue = btn.getAttribute('data-filter');
-
-                projectCards.forEach(card => {
-                    if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                        card.style.display = 'block';
-                        card.style.animation = 'fadeInScale 0.5s ease forwards';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
+        projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filterValue === 'all' || category === filterValue) {
+                card.style.display = 'block';
+                card.style.animation = 'fadeInScale 0.5s ease forwards';
+            } else {
+                card.style.display = 'none';
+            }
         });
+
+        // Reset scroll position and update navigation
+        this.carousel.scrollLeft = 0;
+        setTimeout(() => {
+            this.updateNavigationButtons();
+        }, 100);
+
+        currentFilter = filterValue;
     }
 };
 
@@ -272,12 +437,19 @@ const contactForm = {
 
             // Simple validation
             if (!name || !email || !subject || !message) {
-                alert('Por favor, completa todos los campos.');
+                alert('Please complete all fields.');
+                return;
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
                 return;
             }
 
             // Create mailto link
-            const mailtoLink = `mailto:gon22043@byui.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`)}`;
+            const mailtoLink = `mailto:gon22043@byui.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
 
             // Open email client
             window.location.href = mailtoLink;
@@ -286,15 +458,67 @@ const contactForm = {
             form.reset();
 
             // Show success message
-            alert('¡Gracias por tu mensaje! Se abrirá tu cliente de correo.');
+            this.showSuccessMessage();
         });
+    },
+
+    showSuccessMessage() {
+        const submitBtn = document.querySelector('.form-submit');
+        const originalText = submitBtn.querySelector('.btn-text').textContent;
+        const originalIcon = submitBtn.querySelector('i').className;
+
+        submitBtn.querySelector('.btn-text').textContent = 'Message Sent!';
+        submitBtn.querySelector('i').className = 'fas fa-check';
+        submitBtn.style.background = 'linear-gradient(135deg, #34C759, #28a745)';
+
+        setTimeout(() => {
+            submitBtn.querySelector('.btn-text').textContent = originalText;
+            submitBtn.querySelector('i').className = originalIcon;
+            submitBtn.style.background = '';
+        }, 3000);
     }
 };
 
-// Download Resume Function
+// Resume Download Function
 function downloadResume() {
-    // You can replace this with an actual resume file URL
-    alert('Resume download will be implemented soon!');
+    try {
+        // Create a blob with the resume content
+        const blob = new Blob([resumeContent], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+
+        // Create a temporary link element
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'Kevin_Gonzalez_Resume.txt';
+
+        // Append to body, click, and remove
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // Clean up the URL object
+        window.URL.revokeObjectURL(url);
+
+        // Show success feedback
+        const downloadBtn = document.querySelector('.btn-secondary');
+        if (downloadBtn) {
+            const originalText = downloadBtn.querySelector('.btn-text').textContent;
+            const originalIcon = downloadBtn.querySelector('i').className;
+
+            downloadBtn.querySelector('.btn-text').textContent = 'Downloaded!';
+            downloadBtn.querySelector('i').className = 'fas fa-check';
+            downloadBtn.style.background = 'linear-gradient(135deg, #34C759, #28a745)';
+
+            setTimeout(() => {
+                downloadBtn.querySelector('.btn-text').textContent = originalText;
+                downloadBtn.querySelector('i').className = originalIcon;
+                downloadBtn.style.background = '';
+            }, 2000);
+        }
+    } catch (error) {
+        console.error('Error downloading resume:', error);
+        alert('Sorry, there was an error downloading the resume. Please try again.');
+    }
 }
 
 // Header Scroll Effect
@@ -328,6 +552,99 @@ const headerScrollEffect = {
     }
 };
 
+// Enhanced Project Card Interactions
+const projectInteractions = {
+    init() {
+        const projectCards = document.querySelectorAll('.project-card-enhanced');
+
+        projectCards.forEach(card => {
+            // Add click handler for the entire card
+            card.addEventListener('click', (e) => {
+                // Check if click was on a link or button
+                if (e.target.closest('a') || e.target.closest('button')) {
+                    return; // Let the link/button handle the click
+                }
+
+                // Find the GitHub link in this card
+                const githubLink = card.querySelector('.project-action-btn[href*="github"]');
+                if (githubLink) {
+                    window.open(githubLink.href, '_blank', 'noopener,noreferrer');
+                }
+            });
+
+            // Prevent event bubbling for links
+            const links = card.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+            });
+        });
+    }
+};
+
+// Keyboard Navigation
+const keyboardNavigation = {
+    init() {
+        document.addEventListener('keydown', (e) => {
+            switch (e.key) {
+                case 'Escape':
+                    // Close any modals or reset states
+                    const activeModals = document.querySelectorAll('.modal.active');
+                    activeModals.forEach(modal => {
+                        modal.classList.remove('active');
+                    });
+                    break;
+
+                case 'ArrowLeft':
+                    if (e.target.closest('.projects-carousel-container')) {
+                        e.preventDefault();
+                        projectsCarousel.scrollPrev();
+                    }
+                    break;
+
+                case 'ArrowRight':
+                    if (e.target.closest('.projects-carousel-container')) {
+                        e.preventDefault();
+                        projectsCarousel.scrollNext();
+                    }
+                    break;
+            }
+        });
+    }
+};
+
+// Performance Optimization
+const performanceOptimization = {
+    init() {
+        // Preload images for better performance
+        this.preloadImages();
+
+        // Add intersection observer for lazy loading animations
+        this.setupLazyAnimations();
+    },
+
+    preloadImages() {
+        const imageUrls = [
+            // Add any image URLs you want to preload
+        ];
+
+        imageUrls.forEach(url => {
+            const img = new Image();
+            img.src = url;
+        });
+    },
+
+    setupLazyAnimations() {
+        // Add staggered animation delays for focus items
+        const focusItems = document.querySelectorAll('.focus-item[data-delay]');
+        focusItems.forEach((item, index) => {
+            const delay = item.getAttribute('data-delay') || (index * 200);
+            item.style.animationDelay = `${delay}ms`;
+        });
+    }
+};
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
@@ -338,10 +655,13 @@ document.addEventListener('DOMContentLoaded', () => {
     counterAnimation.init();
     magneticEffect.init();
     scrollAnimations.init();
-    projectFilter.init();
+    projectsCarousel.init();
     smoothScrolling.init();
     contactForm.init();
     headerScrollEffect.init();
+    projectInteractions.init();
+    keyboardNavigation.init();
+    performanceOptimization.init();
 
     // Add CSS animations
     const style = document.createElement('style');
@@ -356,6 +676,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 transform: scale(1);
             }
         }
+        
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .project-card-enhanced {
+            animation: slideInFromRight 0.6s ease forwards;
+        }
     `;
     document.head.appendChild(style);
 });
@@ -369,22 +704,13 @@ window.addEventListener('load', () => {
             loadingScreen.classList.add('hidden');
         }
     }, 1000);
-});
 
-// Prevent right-click context menu (optional)
-document.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
-});
-
-// Add keyboard navigation
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        // Close any modals or reset states
-        const activeModals = document.querySelectorAll('.modal.active');
-        activeModals.forEach(modal => {
-            modal.classList.remove('active');
-        });
-    }
+    // Initialize carousel navigation after everything is loaded
+    setTimeout(() => {
+        if (projectsCarousel.updateNavigationButtons) {
+            projectsCarousel.updateNavigationButtons();
+        }
+    }, 1500);
 });
 
 // Handle window resize
@@ -392,19 +718,85 @@ window.addEventListener('resize', () => {
     // Recalculate animations if needed
     scrollAnimations.init();
     magneticEffect.init();
+
+    // Update carousel navigation
+    if (projectsCarousel.updateNavigationButtons) {
+        projectsCarousel.updateNavigationButtons();
+    }
 });
 
-// Preload images for better performance
-const preloadImages = () => {
-    const imageUrls = [
-        // Add any image URLs you want to preload
-    ];
+// Prevent right-click context menu (optional)
+document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+});
 
-    imageUrls.forEach(url => {
-        const img = new Image();
-        img.src = url;
+// Add smooth scroll behavior for any anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
+});
+
+// Error handling for external links
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[target="_blank"]');
+    if (link) {
+        // Add error handling for external links
+        link.addEventListener('error', () => {
+            console.warn('Failed to load external link:', link.href);
+        });
+    }
+});
+
+// Add loading states for buttons
+const addLoadingState = (button, duration = 2000) => {
+    const originalContent = button.innerHTML;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+    button.disabled = true;
+
+    setTimeout(() => {
+        button.innerHTML = originalContent;
+        button.disabled = false;
+    }, duration);
 };
 
-// Call preload when page starts loading
-preloadImages();
+// Utility functions
+const utils = {
+    // Debounce function for scroll events
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    },
+
+    // Throttle function for frequent events
+    throttle(func, limit) {
+        let inThrottle;
+        return function () {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+};
+
+// Export for global access
+window.downloadResume = downloadResume;
+window.utils = utils;

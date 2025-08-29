@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,15 +78,11 @@
             </h1>
             <p class="hero-subtitle fade-in-up" data-delay="400">Think different. Code better.</p>
             <p class="hero-description fade-in-up" data-delay="600">
-                Hi, I'm Kevin Gonzalez, a passionate software engineer studying at Brigham Young University - Idaho.
-                I specialize in software design, cloud computing, and full stack development, bringing innovative
-                solutions to complex problems with elegant simplicity.
+                Hi, I'm Kevin Gonzalez, a junior Software Engineering student at Brigham Young University - Idaho.
+                I'm developing skills in software design, cloud computing, and full stack development while working
+                on academic and personal projects that challenge me to think creatively and solve problems effectively.
             </p>
             <div class="hero-stats fade-in-up" data-delay="800">
-                <div class="stat-item">
-                    <div class="stat-number" data-target="2">0</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
                 <div class="stat-item">
                     <div class="stat-number" data-target="15">0</div>
                     <div class="stat-label">Projects Completed</div>
@@ -92,6 +91,11 @@
                     <div class="stat-number" data-target="100">0</div>
                     <div class="stat-label">% Dedication</div>
                 </div>
+                <div class="stat-item">
+                    <div class="stat-number">Junior</div>
+                    <div class="stat-label">Software Engineer</div>
+                </div>
+
             </div>
             <div class="cta-buttons fade-in-up" data-delay="1000">
                 <a href="mailto:gon22043@byui.edu" class="btn btn-primary magnetic">
@@ -101,13 +105,13 @@
                     </span>
                     <div class="btn-hover-effect"></div>
                 </a>
-                <a href="#" class="btn btn-secondary magnetic" onclick="downloadResume()">
+                <button class="btn btn-secondary magnetic" onclick="downloadResume()">
                     <span class="btn-content">
                         <i class="fas fa-download"></i>
                         <span class="btn-text">Download Resume</span>
                     </span>
                     <div class="btn-hover-effect"></div>
-                </a>
+                </button>
             </div>
             <div class="scroll-indicator fade-in-up" data-delay="1200">
                 <div class="scroll-mouse">
@@ -143,13 +147,13 @@
                     </p>
                     <p>
                         My goal is to become a Software Architect, designing scalable systems
-                        that make a meaningful impact. I believe in the power of clean code,
-                        elegant design, and user-centered thinking.
+                        that make a meaningful impact. I enjoy learning through hands-on projects and believe in the
+                        importance of innovation, problem-solving, teamwork, and user-centered design.
                     </p>
                     <div class="about-highlights">
                         <div class="highlight-item">
                             <i class="fas fa-check-circle"></i>
-                            <span>2 Years of Experience</span>
+                            <span>Hands-on Academic & Personal Projects</span>
                         </div>
                         <div class="highlight-item">
                             <i class="fas fa-check-circle"></i>
@@ -190,7 +194,7 @@
             <div class="section-header">
                 <span class="section-number">02</span>
                 <h2 class="section-title reveal-text">Featured Projects</h2>
-                <div class="section-subtitle reveal-text">A showcase of my technical expertise and creativity</div>
+                <div class="section-subtitle reveal-text">A showcase of my ideas, innovation, and coding journey</div>
             </div>
 
             <div class="projects-filter reveal-up">
@@ -199,244 +203,310 @@
                 <button class="filter-btn" data-filter="personal">Personal</button>
             </div>
 
-            <div class="projects-grid-masonry" id="projectsGrid">
+            <!-- Projects Carousel -->
+            <div class="projects-carousel-container">
+                <button class="carousel-nav prev-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
 
-                <!-- Web Development -->
-                <div class="project-card-enhanced magnetic" data-category="class">
-                    <div class="project-image-enhanced">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/kevingonmed/wdd131" class="project-link-btn"
-                                    target="_blank">
+                <div class="projects-carousel" id="projectsCarousel">
+                    <!-- Web Development -->
+                    <div class="project-card-enhanced magnetic" data-category="class">
+                        <div class="project-image-enhanced">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/kevingonmed/wdd131" class="project-link-btn"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                        </div>
+                        <div class="project-content-enhanced">
+                            <h3 class="project-title-enhanced">Web Development</h3>
+                            <p class="project-description-enhanced">
+                                The course focuses on building dynamic websites using HTML, CSS, and JavaScript,
+                                with an emphasis on interactive, responsive, and accessible web design.
+                            </p>
+                            <div class="project-actions">
+                                <a href="https://github.com/kevingonmed/wdd131" target="_blank"
+                                    rel="noopener noreferrer" class="project-action-btn">
                                     <i class="fab fa-github"></i>
+                                    View Code
                                 </a>
                             </div>
                         </div>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge">HTML</span>
-                            <span class="tech-badge">CSS</span>
-                            <span class="tech-badge">JavaScript</span>
-                        </div>
-                        <div class="project-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
                     </div>
-                    <div class="project-content-enhanced">
-                        <h3 class="project-title-enhanced">Web Development</h3>
-                        <p class="project-description-enhanced">
-                            The course focuses on building dynamic websites using HTML, CSS, and JavaScript,
-                            with an emphasis on interactive, responsive, and accessible web design.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Modularization Design -->
-                <div class="project-card-enhanced magnetic" data-category="class">
-                    <div class="project-image-enhanced">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/kevingonmed/Modularization-Design" class="project-link-btn"
-                                    target="_blank">
+                    <!-- Modularization Design -->
+                    <div class="project-card-enhanced magnetic" data-category="class">
+                        <div class="project-image-enhanced">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/kevingonmed/Modularization-Design"
+                                        class="project-link-btn" target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Structure Charts</span>
+                                <span class="tech-badge">Recursion</span>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                        </div>
+                        <div class="project-content-enhanced">
+                            <h3 class="project-title-enhanced">Modularization Design</h3>
+                            <p class="project-description-enhanced">
+                                Focused on designing and debugging modular programs using multiple functions,
+                                with emphasis on problem solving and clean software design.
+                            </p>
+                            <div class="project-actions">
+                                <a href="https://github.com/kevingonmed/Modularization-Design" target="_blank"
+                                    rel="noopener noreferrer" class="project-action-btn">
                                     <i class="fab fa-github"></i>
+                                    View Code
                                 </a>
                             </div>
                         </div>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Structure Charts</span>
-                            <span class="tech-badge">Recursion</span>
-                        </div>
-                        <div class="project-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
                     </div>
-                    <div class="project-content-enhanced">
-                        <h3 class="project-title-enhanced">Modularization Design</h3>
-                        <p class="project-description-enhanced">
-                            Focused on designing and debugging modular programs using multiple functions,
-                            with emphasis on problem solving and clean software design.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Algorithm Design -->
-                <div class="project-card-enhanced magnetic" data-category="class">
-                    <div class="project-image-enhanced">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/kevingonmed/Algorithm-Design" class="project-link-btn"
-                                    target="_blank">
+                    <!-- Algorithm Design -->
+                    <div class="project-card-enhanced magnetic" data-category="class">
+                        <div class="project-image-enhanced">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/kevingonmed/Algorithm-Design" class="project-link-btn"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">Pseudocode</span>
+                                <span class="tech-badge">Design Metrics</span>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                        </div>
+                        <div class="project-content-enhanced">
+                            <h3 class="project-title-enhanced">Algorithm Design</h3>
+                            <p class="project-description-enhanced">
+                                The course focuses on designing and debugging algorithms within a single function,
+                                with strong emphasis on problem-solving and analysis skills.
+                            </p>
+                            <div class="project-actions">
+                                <a href="https://github.com/kevingonmed/Algorithm-Design" target="_blank"
+                                    rel="noopener noreferrer" class="project-action-btn">
                                     <i class="fab fa-github"></i>
+                                    View Code
                                 </a>
                             </div>
                         </div>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Pseudocode</span>
-                            <span class="tech-badge">Design Metrics</span>
-                        </div>
-                        <div class="project-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
                     </div>
-                    <div class="project-content-enhanced">
-                        <h3 class="project-title-enhanced">Algorithm Design</h3>
-                        <p class="project-description-enhanced">
-                            The course focuses on designing and debugging algorithms within a single function,
-                            with strong emphasis on problem-solving and analysis skills.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Cloud Computing -->
-                <div class="project-card-enhanced magnetic" data-category="class">
-                    <div class="project-image-enhanced">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/kevingonmed/Intro-to-Cloud" class="project-link-btn"
-                                    target="_blank">
+                    <!-- Cloud Computing -->
+                    <div class="project-card-enhanced magnetic" data-category="class">
+                        <div class="project-image-enhanced">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/kevingonmed/Intro-to-Cloud" class="project-link-btn"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge">AWS</span>
+                                <span class="tech-badge">Firebase</span>
+                                <span class="tech-badge">Azure</span>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                        </div>
+                        <div class="project-content-enhanced">
+                            <h3 class="project-title-enhanced">Cloud Computing</h3>
+                            <p class="project-description-enhanced">
+                                Deployed scalable applications using cloud services,
+                                containerization, and microservices architecture.
+                            </p>
+                            <div class="project-actions">
+                                <a href="https://github.com/kevingonmed/Intro-to-Cloud" target="_blank"
+                                    rel="noopener noreferrer" class="project-action-btn">
                                     <i class="fab fa-github"></i>
+                                    View Code
                                 </a>
                             </div>
                         </div>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge">AWS</span>
-                            <span class="tech-badge">Firebase</span>
-                            <span class="tech-badge">Azure</span>
-                        </div>
-                        <div class="project-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
                     </div>
-                    <div class="project-content-enhanced">
-                        <h3 class="project-title-enhanced">Cloud Computing</h3>
-                        <p class="project-description-enhanced">
-                            Deployed scalable applications using cloud services,
-                            containerization, and microservices architecture.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- jFit -->
-                <div class="project-card-enhanced magnetic" data-category="personal">
-                    <div class="project-image-enhanced">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/kevingonmed/jFIT" class="project-link-btn" target="_blank">
+                    <!-- jFit -->
+                    <div class="project-card-enhanced magnetic" data-category="personal">
+                        <div class="project-image-enhanced">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/kevingonmed/jFIT" class="project-link-btn"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge">Kotlin</span>
+                                <span class="tech-badge">Android</span>
+                                <span class="tech-badge">Mobile App</span>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                        </div>
+                        <div class="project-content-enhanced">
+                            <h3 class="project-title-enhanced">jFit</h3>
+                            <p class="project-description-enhanced">
+                                Mobile app to track fitness routines, diet, and health statistics,
+                                helping users achieve their goals effectively.
+                            </p>
+                            <div class="project-actions">
+                                <a href="https://github.com/kevingonmed/jFIT" target="_blank" rel="noopener noreferrer"
+                                    class="project-action-btn">
                                     <i class="fab fa-github"></i>
+                                    View Code
                                 </a>
                             </div>
                         </div>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge">Kotlin</span>
-                            <span class="tech-badge">Android</span>
-                            <span class="tech-badge">Mobile App</span>
-                        </div>
-                        <div class="project-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
                     </div>
-                    <div class="project-content-enhanced">
-                        <h3 class="project-title-enhanced">jFit</h3>
-                        <p class="project-description-enhanced">
-                            Mobile app to track fitness routines, diet, and health statistics,
-                            helping users achieve their goals effectively.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Rexy's Voice -->
-                <div class="project-card-enhanced magnetic" data-category="personal">
-                    <div class="project-image-enhanced">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/MitziVite/Hackathon-fall-2024" class="project-link-btn"
-                                    target="_blank">
+                    <!-- Rexy's Voice -->
+                    <div class="project-card-enhanced magnetic" data-category="personal">
+                        <div class="project-image-enhanced">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/MitziVite/Hackathon-fall-2024" class="project-link-btn"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">Backend</span>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
+                        <div class="project-content-enhanced">
+                            <h3 class="project-title-enhanced">Rexy's Voice</h3>
+                            <p class="project-description-enhanced">
+                                Web app built during a hackathon to let students rate and review classes
+                                at BYU-Idaho, improving course selection decisions.
+                            </p>
+                            <div class="project-actions">
+                                <a href="https://github.com/MitziVite/Hackathon-fall-2024" target="_blank"
+                                    rel="noopener noreferrer" class="project-action-btn">
                                     <i class="fab fa-github"></i>
+                                    View Code
                                 </a>
                             </div>
                         </div>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge">HTML</span>
-                            <span class="tech-badge">CSS</span>
-                            <span class="tech-badge">Backend</span>
-                        </div>
-                        <div class="project-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
                     </div>
-                    <div class="project-content-enhanced">
-                        <h3 class="project-title-enhanced">Rexy's Voice</h3>
-                        <p class="project-description-enhanced">
-                            Web app built during a hackathon to let students rate and review classes
-                            at BYU-Idaho, improving course selection decisions.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Lengua AI -->
-                <div class="project-card-enhanced magnetic" data-category="personal">
-                    <div class="project-image-enhanced">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://lengua-ai-c060e.web.app/" class="project-link-btn" target="_blank">
-                                    <i class="fab fa-github"></i>
+                    <!-- Lengua AI -->
+                    <div class="project-card-enhanced magnetic" data-category="personal">
+                        <div class="project-image-enhanced">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://lengua-ai-c060e.web.app/" class="project-link-btn" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge">AI</span>
+                                <span class="tech-badge">Hugging Face</span>
+                                <span class="tech-badge">API</span>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                        </div>
+                        <div class="project-content-enhanced">
+                            <h3 class="project-title-enhanced">Lengua AI</h3>
+                            <p class="project-description-enhanced">
+                                Responsive web app that translates text instantly using Hugging Face API.
+                                Supports language swap and rewriting with different tones.
+                            </p>
+                            <div class="project-actions">
+                                <a href="https://lengua-ai-c060e.web.app/" target="_blank" rel="noopener noreferrer"
+                                    class="project-action-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Live Demo
                                 </a>
                             </div>
                         </div>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge">AI</span>
-                            <span class="tech-badge">Hugging Face</span>
-                            <span class="tech-badge">API</span>
-                        </div>
-                        <div class="project-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
                     </div>
-                    <div class="project-content-enhanced">
-                        <h3 class="project-title-enhanced">Lengua AI</h3>
-                        <p class="project-description-enhanced">
-                            Responsive web app that translates text instantly using Hugging Face API.
-                            Supports language swap and rewriting with different tones.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Moodyst -->
-                <div class="project-card-enhanced magnetic" data-category="personal">
-                    <div class="project-image-enhanced">
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://github.com/kevingonmed/Playlist-Manager" class="project-link-btn"
-                                    target="_blank">
+                    <!-- Moodyst -->
+                    <div class="project-card-enhanced magnetic" data-category="personal">
+                        <div class="project-image-enhanced">
+                            <div class="project-overlay">
+                                <div class="project-links">
+                                    <a href="https://github.com/kevingonmed/Playlist-Manager" class="project-link-btn"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="project-tech-stack">
+                                <span class="tech-badge">Python</span>
+                                <span class="tech-badge">AI</span>
+                                <span class="tech-badge">Spotify</span>
+                            </div>
+                            <div class="project-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                        </div>
+                        <div class="project-content-enhanced">
+                            <h3 class="project-title-enhanced">Moodyst</h3>
+                            <p class="project-description-enhanced">
+                                Python app that generates personalized Spotify playlists
+                                based on user mood using AI-powered text analysis.
+                            </p>
+                            <div class="project-actions">
+                                <a href="https://github.com/kevingonmed/Playlist-Manager" target="_blank"
+                                    rel="noopener noreferrer" class="project-action-btn">
                                     <i class="fab fa-github"></i>
+                                    View Code
                                 </a>
                             </div>
                         </div>
-                        <div class="project-tech-stack">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">AI</span>
-                            <span class="tech-badge">Spotify</span>
-                        </div>
-                        <div class="project-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                    </div>
-                    <div class="project-content-enhanced">
-                        <h3 class="project-title-enhanced">Moodyst</h3>
-                        <p class="project-description-enhanced">
-                            Python app that generates personalized Spotify playlists
-                            based on user mood using AI-powered text analysis.
-                        </p>
                     </div>
                 </div>
 
+                <button class="carousel-nav next-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
 
-
-    </section> <!-- Contact Section -->
+    <!-- Contact Section -->
     <section id="contact" class="section section-light">
         <div class="section-content">
             <div class="section-header">
@@ -450,9 +520,8 @@
                     <h3>Get in Touch</h3>
                     <p>
                         I'm always excited to discuss new opportunities, whether it's a full-time role,
-                        freelance project, or just a chat about technology. Let's create something amazing together!
+                        internships, or just a chat about technology. Let's create something amazing together!
                     </p>
-
 
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/kevin-gonzalez-/" class="social-link magnetic"
@@ -502,7 +571,6 @@
             </div>
         </div>
     </section>
-    <!-- Contact Section -->
 
     <!-- Footer -->
     <footer class="footer">
