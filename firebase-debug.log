@@ -1,0 +1,102 @@
+[debug] [2025-08-29T20:58:28.260Z] ----------------------------------------------------------------------
+[debug] [2025-08-29T20:58:28.263Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Legion\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-08-29T20:58:28.263Z] CLI Version:   14.11.0
+[debug] [2025-08-29T20:58:28.264Z] Platform:      win32
+[debug] [2025-08-29T20:58:28.264Z] Node Version:  v20.18.0
+[debug] [2025-08-29T20:58:28.264Z] Time:          Fri Aug 29 2025 14:58:28 GMT-0600 (hora de verano de la montaña)
+[debug] [2025-08-29T20:58:28.264Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-29T20:58:28.469Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-29T20:58:28.469Z] > authorizing via signed-in user (gon22043@byui.edu)
+[debug] [2025-08-29T20:58:28.469Z] [iam] checking project kevin-portfolio-f97c4 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-29T20:58:28.471Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:28.471Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:28.472Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/kevin-portfolio-f97c4:testIamPermissions [none]
+[debug] [2025-08-29T20:58:28.472Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/kevin-portfolio-f97c4:testIamPermissions x-goog-quota-user=projects/kevin-portfolio-f97c4
+[debug] [2025-08-29T20:58:28.472Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kevin-portfolio-f97c4:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-29T20:58:28.626Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/kevin-portfolio-f97c4:testIamPermissions 200
+[debug] [2025-08-29T20:58:28.626Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/kevin-portfolio-f97c4:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-29T20:58:28.628Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:28.628Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:28.629Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/kevin-portfolio-f97c4 [none]
+[debug] [2025-08-29T20:58:28.937Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/kevin-portfolio-f97c4 200
+[debug] [2025-08-29T20:58:28.937Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/kevin-portfolio-f97c4 {"projectId":"kevin-portfolio-f97c4","projectNumber":"1032052402901","displayName":"kevin-portfolio","name":"projects/kevin-portfolio-f97c4","resources":{"hostingSite":"kevin-portfolio-f97c4"},"state":"ACTIVE","etag":"1_f9da88c8-5f72-4df6-9605-39c298ad462d"}
+[info] 
+[info] === Deploying to 'kevin-portfolio-f97c4'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2025-08-29T20:58:28.943Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:28.943Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:28.944Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/versions [none]
+[debug] [2025-08-29T20:58:28.944Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2025-08-29T20:58:29.564Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/versions 200
+[debug] [2025-08-29T20:58:29.564Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/versions {"name":"projects/1032052402901/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[kevin-portfolio-f97c4]: beginning deploy... 
+[info] i  hosting[kevin-portfolio-f97c4]: found 5 files in public 
+[debug] [2025-08-29T20:58:29.589Z] [hosting] uploading with 200 concurrency
+[debug] [2025-08-29T20:58:29.594Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:29.594Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:29.595Z] [hosting] hash cache [cHVibGlj] stored for 5 files
+[debug] [2025-08-29T20:58:29.595Z] [hosting][hash queue][FINAL] {"max":1,"min":0,"avg":0,"active":0,"complete":5,"success":5,"errored":0,"retried":0,"total":5,"elapsed":3}
+[debug] [2025-08-29T20:58:29.596Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/1032052402901/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe:populateFiles [none]
+[debug] [2025-08-29T20:58:29.596Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/1032052402901/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe:populateFiles {"files":{"/styles.css":"6703c05cfc3be9236510beacc774bc3e945ad62ac73e0cce5c05e0b46522e11f","/script.js":"380802ee9745a7386b21bb82715d39d4da7f0108e24e9355a540629365c3a978","/indexmain.html":"690977fda56d2c0193036ae7a6fcb21751ea43b0ef6862835e85d482820a3dd6","/index.html":"a097ca666c7ff62a513b5bb00fe0186648ff7bc68278ffe68e951802055e576d","/404.html":"762bf484ba67404bd1a3b181546ea28d60dfddf18e9dd4795d8d25bcf3c1a890"}}
+[debug] [2025-08-29T20:58:29.763Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/1032052402901/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe:populateFiles 200
+[debug] [2025-08-29T20:58:29.763Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/1032052402901/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe/files"}
+[debug] [2025-08-29T20:58:29.763Z] [hosting][populate queue][FINAL] {"max":169,"min":169,"avg":169,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":169}
+[debug] [2025-08-29T20:58:29.763Z] [hosting] uploads queued: 0
+[debug] [2025-08-29T20:58:29.763Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1756501109763}
+[info] +  hosting[kevin-portfolio-f97c4]: file upload complete 
+[debug] [2025-08-29T20:58:29.764Z] [hosting] deploy completed after 195ms
+[debug] [2025-08-29T20:58:29.764Z] [
+  {
+    "config": {
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "kevin-portfolio-f97c4"
+    },
+    "version": "projects/1032052402901/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe"
+  }
+]
+[info] i  hosting[kevin-portfolio-f97c4]: finalizing version... 
+[debug] [2025-08-29T20:58:29.766Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:29.766Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:29.767Z] >>> [apiv2][query] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe updateMask=status%2Cconfig
+[debug] [2025-08-29T20:58:29.767Z] >>> [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe {"status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]}}
+[debug] [2025-08-29T20:58:29.892Z] <<< [apiv2][status] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe 200
+[debug] [2025-08-29T20:58:29.892Z] <<< [apiv2][body] PATCH https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe {"name":"projects/1032052402901/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-08-29T20:58:29.746790Z","createUser":{"email":"gon22043@byui.edu"},"finalizeTime":"2025-08-29T20:58:30.296640Z","finalizeUser":{"email":"gon22043@byui.edu"}}
+[debug] [2025-08-29T20:58:29.893Z] [hosting] finalized version for kevin-portfolio-f97c4:[object Object]
+[info] +  hosting[kevin-portfolio-f97c4]: version finalized 
+[info] i  hosting[kevin-portfolio-f97c4]: releasing new version... 
+[debug] [2025-08-29T20:58:29.893Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:29.894Z] Checked if tokens are valid: true, expires at: 1756504487287
+[debug] [2025-08-29T20:58:29.894Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/channels/live/releases versionName=projects%2F1032052402901%2Fsites%2Fkevin-portfolio-f97c4%2Fversions%2F92a35d079bd0e0fe
+[debug] [2025-08-29T20:58:29.894Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/channels/live/releases {}
+[debug] [2025-08-29T20:58:30.083Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/channels/live/releases 200
+[debug] [2025-08-29T20:58:30.083Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/kevin-portfolio-f97c4/channels/live/releases {"name":"projects/1032052402901/sites/kevin-portfolio-f97c4/channels/live/releases/1756501109938000","version":{"name":"projects/1032052402901/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-08-29T20:58:29.746790Z","createUser":{"email":"gon22043@byui.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIt07kt9aZqqosIFYOcrLiG8ccdf1sD55gC9vraUWvpQ7fM1A=mo"},"finalizeTime":"2025-08-29T20:58:30.296640Z","finalizeUser":{"email":"gon22043@byui.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIt07kt9aZqqosIFYOcrLiG8ccdf1sD55gC9vraUWvpQ7fM1A=mo"}},"type":"DEPLOY","releaseTime":"2025-08-29T20:58:29.938Z","releaseUser":{"email":"gon22043@byui.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIt07kt9aZqqosIFYOcrLiG8ccdf1sD55gC9vraUWvpQ7fM1A=mo"}}
+[debug] [2025-08-29T20:58:30.084Z] [hosting] release: {"name":"projects/1032052402901/sites/kevin-portfolio-f97c4/channels/live/releases/1756501109938000","version":{"name":"projects/1032052402901/sites/kevin-portfolio-f97c4/versions/92a35d079bd0e0fe","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2025-08-29T20:58:29.746790Z","createUser":{"email":"gon22043@byui.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIt07kt9aZqqosIFYOcrLiG8ccdf1sD55gC9vraUWvpQ7fM1A=mo"},"finalizeTime":"2025-08-29T20:58:30.296640Z","finalizeUser":{"email":"gon22043@byui.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIt07kt9aZqqosIFYOcrLiG8ccdf1sD55gC9vraUWvpQ7fM1A=mo"}},"type":"DEPLOY","releaseTime":"2025-08-29T20:58:29.938Z","releaseUser":{"email":"gon22043@byui.edu","imageUrl":"https://lh3.googleusercontent.com/a/ACg8ocIt07kt9aZqqosIFYOcrLiG8ccdf1sD55gC9vraUWvpQ7fM1A=mo"}}
+[info] +  hosting[kevin-portfolio-f97c4]: release complete 
+[info] 
+[info] +  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/kevin-portfolio-f97c4/overview
+[info] Hosting URL: https://kevin-portfolio-f97c4.web.app
+[debug] [2025-08-29T20:58:30.095Z] Error: EBUSY: resource busy or locked, unlink 'C:\Users\Legion\OneDrive - BYU-Idaho\Portfolio\firebase-debug.log'
+    at Object.unlinkSync (node:fs:1885:11)
+    at process.<anonymous> (C:\Users\Legion\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\cli.js:44:16)
+    at process.emit (node:events:531:35)
+    at process.processEmit [as emit] (C:\Users\Legion\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\restore-cursor\node_modules\signal-exit\index.js:191:37)
+    at process.exit (node:internal/process/per_thread:185:15)
+    at C:\Users\Legion\AppData\Roaming\npm\node_modules\firebase-tools\lib\command.js:121:25
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: An unexpected error has occurred.
