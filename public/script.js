@@ -1,102 +1,7 @@
 // Global variables
 let currentFilter = 'all';
 
-// Resume content for download
-const resumeContent = `Kevin Gonzalez - Software Engineer
 
-Contact Information:
-Email: gon22043@byui.edu
-LinkedIn: https://www.linkedin.com/in/kevin-gonzalez-/
-GitHub: https://github.com/kevingonmed
-Location: Rexburg, Idaho
-
-Education:
-Brigham Young University - Idaho
-Bachelor of Science in Software Engineering
-Expected Graduation: 2026
-GPA: 3.8/4.0
-
-Experience:
-Software Engineer Student (2022 - Present)
-- 2+ years of hands-on experience in software development
-- Completed 15+ projects ranging from web applications to mobile apps
-- Proficient in multiple programming languages and frameworks
-
-Technical Skills:
-Programming Languages: Python, JavaScript, HTML, CSS, Kotlin
-Frameworks & Libraries: React, Node.js, Android SDK
-Cloud Technologies: AWS, Firebase, Azure
-Databases: MySQL, MongoDB
-Tools: Git, Docker, VS Code
-
-Projects:
-
-1. Web Development Course Projects
-   - Built dynamic websites using HTML, CSS, and JavaScript
-   - Focused on responsive, accessible web design
-   - Repository: https://github.com/kevingonmed/wdd131
-
-2. Modularization Design
-   - Designed modular programs using Python
-   - Emphasized clean software architecture and problem-solving
-   - Repository: https://github.com/kevingonmed/Modularization-Design
-
-3. Algorithm Design
-   - Implemented various algorithms and data structures
-   - Focused on optimization and analysis
-   - Repository: https://github.com/kevingonmed/Algorithm-Design
-
-4. Cloud Computing Projects
-   - Deployed scalable applications using AWS, Firebase, and Azure
-   - Experience with containerization and microservices
-   - Repository: https://github.com/kevingonmed/Intro-to-Cloud
-
-5. jFit Mobile App
-   - Android fitness tracking application built with Kotlin
-   - Features workout tracking, diet monitoring, and health statistics
-   - Repository: https://github.com/kevingonmed/jFIT
-
-6. Rexy's Voice (Hackathon Project)
-   - Web application for course reviews at BYU-Idaho
-   - Built during hackathon with team collaboration
-   - Repository: https://github.com/MitziVite/Hackathon-fall-2024
-
-7. Lengua AI
-   - AI-powered translation web application
-   - Integrates Hugging Face API for instant translation
-   - Live Demo: https://lengua-ai-c060e.web.app/
-
-8. Moodyst Playlist Manager
-   - Python application for mood-based Spotify playlists
-   - Uses AI text analysis for personalized music recommendations
-   - Repository: https://github.com/kevingonmed/Playlist-Manager
-
-Core Competencies:
-- Software Architecture and Design
-- Full Stack Development
-- Cloud Computing and Deployment
-- Mobile Application Development
-- Problem Solving and Algorithm Design
-- Team Collaboration and Version Control
-- User Experience Design
-
-Philosophy:
-"Think different. Code better." - I believe in creating scalable, elegant solutions 
-that make a meaningful impact. My goal is to become a Software Architect, designing 
-systems that solve real-world problems with innovative technology.
-
-Awards & Recognition:
-- Dean's List (Multiple Semesters)
-- Hackathon Participant
-- 100% Project Completion Rate
-
-References:
-Available upon request
-
----
-Generated on ${new Date().toLocaleDateString()}
-Portfolio: https://kevingonzalez.dev
-`;
 
 // Custom Cursor
 const cursor = {
@@ -481,43 +386,36 @@ const contactForm = {
 
 // Resume Download Function
 function downloadResume() {
-    try {
-        // Create a blob with the resume content
-        const blob = new Blob([resumeContent], { type: 'text/plain' });
-        const url = window.URL.createObjectURL(blob);
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = 'images/Kevin_Gonzalez_Resume_2025.pdf';
+    link.download = 'Kevin_Gonzalez_Resume.pdf';
 
-        // Create a temporary link element
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = 'Kevin_Gonzalez_Resume.txt';
+    // Append to body, click, and remove
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
-        // Append to body, click, and remove
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+    // Show success feedback
+    const downloadBtn = event.target.closest('button'); // Gets the button that was clicked
+    if (downloadBtn) {
+        const btnText = downloadBtn.querySelector('.btn-text');
+        const btnIcon = downloadBtn.querySelector('i');
 
-        // Clean up the URL object
-        window.URL.revokeObjectURL(url);
+        if (btnText && btnIcon) {
+            const originalText = btnText.textContent;
+            const originalIcon = btnIcon.className;
 
-        // Show success feedback
-        const downloadBtn = document.querySelector('.btn-secondary');
-        if (downloadBtn) {
-            const originalText = downloadBtn.querySelector('.btn-text').textContent;
-            const originalIcon = downloadBtn.querySelector('i').className;
-
-            downloadBtn.querySelector('.btn-text').textContent = 'Downloaded!';
-            downloadBtn.querySelector('i').className = 'fas fa-check';
+            btnText.textContent = 'Downloaded!';
+            btnIcon.className = 'fas fa-check';
             downloadBtn.style.background = 'linear-gradient(135deg, #34C759, #28a745)';
 
             setTimeout(() => {
-                downloadBtn.querySelector('.btn-text').textContent = originalText;
-                downloadBtn.querySelector('i').className = originalIcon;
+                btnText.textContent = originalText;
+                btnIcon.className = originalIcon;
                 downloadBtn.style.background = '';
             }, 2000);
         }
-    } catch (error) {
-        console.error('Error downloading resume:', error);
-        alert('Sorry, there was an error downloading the resume. Please try again.');
     }
 }
 
