@@ -386,37 +386,13 @@ const contactForm = {
 
 // Resume Download Function
 function downloadResume() {
-    // Create a temporary link element
+    // Download the PDF
     const link = document.createElement('a');
     link.href = 'images/Kevin_Gonzalez_Resume_2025.pdf';
     link.download = 'Kevin_Gonzalez_Resume.pdf';
-
-    // Append to body, click, and remove
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-
-    // Show success feedback
-    const downloadBtn = event.target.closest('button'); // Gets the button that was clicked
-    if (downloadBtn) {
-        const btnText = downloadBtn.querySelector('.btn-text');
-        const btnIcon = downloadBtn.querySelector('i');
-
-        if (btnText && btnIcon) {
-            const originalText = btnText.textContent;
-            const originalIcon = btnIcon.className;
-
-            btnText.textContent = 'Downloaded!';
-            btnIcon.className = 'fas fa-check';
-            downloadBtn.style.background = 'linear-gradient(135deg, #34C759, #28a745)';
-
-            setTimeout(() => {
-                btnText.textContent = originalText;
-                btnIcon.className = originalIcon;
-                downloadBtn.style.background = '';
-            }, 2000);
-        }
-    }
 }
 
 // Header Scroll Effect
